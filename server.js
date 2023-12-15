@@ -15,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-const movieRouter = require('./routes/movies-router.js');
-app.use('/movies', movieRouter);
+const apiRouter = require('./routes/api-router.js')
+app.use('/', apiRouter)
 
 // Root route
 app.get('/', function (req, res) {
