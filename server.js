@@ -19,9 +19,7 @@ const apiRouter = require('./routes/api-router.js')
 app.use('/', apiRouter)
 
 // Root route
-app.get('/', function (req, res) {
-  res.send('<h1>Movies</h1>');
-});
+
 
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
