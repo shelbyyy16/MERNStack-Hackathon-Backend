@@ -21,6 +21,7 @@ async function show(req, res, next) {
   }
 }
 
+
 async function getMovieDetails(movieId) {
   const omdbApiKey = '6d50e8a9';
   const omdbApiUrl = `http://www.omdbapi.com/?i=${movieId}&apikey=${omdbApiKey}`;
@@ -37,7 +38,7 @@ async function getMovieDetails(movieId) {
 async function getMovies(ratingsFilter) {
 
   const omdbApiKey = '6d50e8a9';
-  const omdbApiUrl = `http://www.omdbapi.com/?s=ratings&apikey=${omdbApiKey}`;
+  const omdbApiUrl = `http://www.omdbapi.com/?s=action&apikey=${omdbApiKey}`;
 
   try {
     const response = await axios.get(omdbApiUrl);
