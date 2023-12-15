@@ -1,11 +1,27 @@
+require("dotenv").config();
+require('./config/db.connection.js');
+
 const express = require('express');
+const cors = require("cors");
+const morgan = require("morgan");
 
 const app = express();
+const { PORT } = process.env;
 
-app.get('/', function(req, res) {
-    res.send('<h1>Hello Express</h1>');
-  });
+// Middleware
+app.use(cors());
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-  app.listen(3000, function() {
-    console.log('Listening on port 3000');
-  });
+// Routes
+const movieRouter = require('./routes/movies-router.js');
+app.use('/movies', movieRouter);
+
+// Root route
+app.get('/', function (req, res) {
+  res.send('<h1>Movies</h1>');
+});
+
+// Start the server
+app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
